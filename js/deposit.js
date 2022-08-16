@@ -6,12 +6,14 @@ const totalBalance = document.querySelector("#total-balance");
 depositBtn.addEventListener("click", function () {
   const newDepositAmount = parseFloat(depositField.value);
   const previousDepositNumber = parseFloat(depositTotalNumber.innerText);
-
+  depositField.value = "";
+  if (isNaN(newDepositAmount)) {
+    alert("please provide number");
+    return;
+  }
   const totalDepositAmount = previousDepositNumber + newDepositAmount;
   depositTotalNumber.innerText = totalDepositAmount;
 
   const totalBalanceAmount = parseFloat(totalBalance.innerText);
   totalBalance.innerText = newDepositAmount + totalBalanceAmount;
-
-  depositField.value = "";
 });
